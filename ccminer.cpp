@@ -1849,7 +1849,7 @@ static void *miner_thread(void *userdata)
 				work_done = true; // force "regen" hash
 			while (!work_done && time(NULL) >= (g_work_time + opt_scantime)) 
 			{
-				sleep(1);
+				usleep(1000);
 				if (sleeptime > 4) {
 					extrajob = true;
 					break;
