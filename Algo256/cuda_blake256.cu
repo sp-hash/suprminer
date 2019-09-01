@@ -19,13 +19,14 @@ __device__ uint32_t __byte_perm(uint32_t a, uint32_t b, uint32_t c);
 #endif
 
 #define UINT2(x,y) make_uint2(x,y)
-
+/* removed otherwise you will get "ROR8 already defined" in linux
 __device__ __inline__ uint2 ROR8(const uint2 a) {
 	uint2 result;
 	result.x = __byte_perm(a.y, a.x, 0x0765);
 	result.y = __byte_perm(a.x, a.y, 0x0765);
 	return result;
 }
+*/
 
 static __device__ uint64_t cuda_swab32ll(uint64_t x) {
 	return MAKE_ULONGLONG(cuda_swab32(_LODWORD(x)), cuda_swab32(_HIDWORD(x)));
